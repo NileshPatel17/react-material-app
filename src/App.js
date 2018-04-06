@@ -21,8 +21,7 @@ import NavBar from './components/navbar';
 
 import Welcome from './components/welcome';
 import About from './components/about';
-import SignIn from './components/signin';
-import SignUp from './components/signup';
+import SignInPage from './views/signin-page';
 
 import './App.css';
 
@@ -58,31 +57,29 @@ class App extends Component {
       <Router>
         <MuiThemeProvider muiTheme={muiTheme}>
           <div>
-            {/* <NavBar 
-                            title="My ReactJS App"  
-                            onTitleClick={()=>this.handleTitleClick()}
-                            onLeftIconButtonClick={()=>this._toogleDrawer()}
-                            onRightIconButtonClick={()=>this.onRightIconButtonClick()}/> */}
+            <NavBar
+              title="My ReactJS App"
+              onTitleClick={() => this.handleTitleClick()}
+              onLeftIconButtonClick={() => this._toogleDrawer()}
+              onRightIconButtonClick={() => this.onRightIconButtonClick()}
+            />
             <Drawer width={200} open={this.state.drawerOpened}>
               <Menu onItemTouchTap={() => this._toogleDrawer()}>
                 <MenuItem primaryText="Preview" leftIcon={<RemoveRedEye />} />
                 <MenuItem primaryText="Share" leftIcon={<PersonAdd />} />
                 <MenuItem primaryText="Get links" leftIcon={<ContentLink />} />
                 <Divider />
-                <MenuItem
-                  primaryText="Make a copy"
-                  leftIcon={<ContentCopy />}
-                />
+                <MenuItem primaryText="Make a copy" leftIcon={<ContentCopy />} />
                 <MenuItem primaryText="Download" leftIcon={<Download />} />
                 <Divider />
                 <MenuItem primaryText="Remove" leftIcon={<Delete />} />
               </Menu>
             </Drawer>
-            <Redirect from="/" to="/signin" />
-            <Route path="/" exact={true} component={Welcome} />
+            {/* <Redirect exact={true} from="/" to="/signin" /> */}
+            <Route path="/" exact={true} component={SignInPage} />
             <Route path="/about" component={About} />
-            <Route path="/signin" component={SignIn} />
-            <Route path="/signup" component={SignUp} />
+            {/* <Route path="/signin" component={SignIn} /> */}
+            <Route path="/signin" component={SignInPage} />
           </div>
         </MuiThemeProvider>
       </Router>
